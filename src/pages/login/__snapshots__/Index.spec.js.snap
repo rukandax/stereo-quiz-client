@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages Login Index Snapshot 1`] = `
+<div id="login-index">
+  <div class="row vh-100 d-flex align-items-center justify-content-center">
+    <div class="col-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="form-group"><label for="nip">NIP</label> <input type="email" id="nip" placeholder="Masukan NIP" class="form-control"></div>
+          <div class="form-group"><label for="password">Password</label> <input type="password" id="password" placeholder="Masukan Password" class="form-control"></div> <button class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

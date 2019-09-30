@@ -90,7 +90,7 @@ exports[`Component Quiz QuizContent Snapshot 1`] = `
     <div class="d-flex justify-content-between">
       <div class="cursor-pointer btn btn-primary"><i class="fas fa-chevron-circle-left mr-2"></i> Soal Sebelumnya</div>
       <div data-toggle="tooltip" data-placement="top" title="
-          Tandai jika anda belum yakin atas jawaban anda, agar bisa kembali lagi nanti
+          Soal yang ditandai akan berwarna kuning di Status Assessment
         " class="cursor-pointer btn btn-outline-warning text-dark"><i class="fas fa-flag mr-2"></i> Tandai Soal
       </div>
       <div class="cursor-pointer btn btn-primary">Soal Selanjutnya <i class="fas fa-chevron-circle-right ml-2"></i></div>

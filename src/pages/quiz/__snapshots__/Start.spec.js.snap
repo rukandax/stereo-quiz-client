@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages Quiz Start Snapshot 1`] = `
+<div id="quiz-start" class="my-5">
+  <div class="row">
+    <div class="col-md-8">
+      <quizcontent-stub></quizcontent-stub>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <quiztimer-stub></quiztimer-stub>
+        <quizprogress-stub></quizprogress-stub>
+        <div class="col-12 mt-4">
+          <div class="cursor-pointer btn btn-block btn-success">
+            Selesai Assessment
+          </div>
+        </div>
+        <div class="col-12 mt-4">
+          <div class="cursor-pointer btn btn-block btn-danger">
+            Keluar Assessment
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

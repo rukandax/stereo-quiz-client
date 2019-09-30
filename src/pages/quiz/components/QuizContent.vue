@@ -100,7 +100,7 @@
           data-toggle="tooltip"
           data-placement="top"
           title="
-            Tandai jika anda belum yakin atas jawaban anda, agar bisa kembali lagi nanti
+            Soal yang ditandai akan berwarna kuning di Status Assessment
           "
         >
           <i class="fas fa-flag mr-2"></i> Tandai Soal
