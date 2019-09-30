@@ -1,0 +1,112 @@
+<template>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="d-flex align-items-start mb-5">
+        <div class="btn btn-secondary mr-3">1</div>
+        <div class="question">
+          <div class="h5 mb-5">
+            Variabel Analisa Kualitatif dalam pemberian kredit terdiri dari faktor internal dan eksternal. Faktor internal yang harus dianalisis meliputi aspek-spek sebagai berikut :
+          </div>
+          <div
+            class="
+              cursor-pointer
+              d-flex
+              align-items-start
+              h6
+              p-3
+              text-left
+              mb-4
+              btn
+              btn-block
+              btn-outline-secondary
+            "
+          >
+            <div class="btn btn-dark mr-3">
+              A
+            </div>
+            <div class="answer-text">
+              Manajemen, Teknis Produksi, Pemasaran, Keuangan, Persaingan Industri dan Agunan
+            </div>
+          </div>
+          <div
+            class="
+              cursor-pointer
+              d-flex
+              align-items-start
+              h6
+              p-3
+              text-left
+              mb-4
+              btn
+              btn-block
+              btn-outline-secondary
+            "
+          >
+            <div class="btn btn-dark mr-3">
+              B
+            </div>
+            <div class="answer-text">
+              Manajemen, Teknis Produksi, Pemasaran, Keuangan dan Siklus atau Konjungtur Ekonomi
+            </div>
+          </div>
+          <div
+            class="
+              cursor-pointer
+              d-flex
+              align-items-start
+              h6
+              p-3
+              text-left
+              mb-4
+              btn
+              btn-block
+              btn-outline-secondary
+            "
+          >
+            <div class="btn btn-dark mr-3">
+              C
+            </div>
+            <div class="answer-text">
+              Manajemen, Teknis Produksi, Pemasaran, Keuangan, Amdal dan Fluktuasi Kurs
+            </div>
+          </div>
+          <div
+            class="
+              cursor-pointer
+              d-flex
+              align-items-start
+              h6
+              p-3
+              text-left
+              mb-4
+              btn
+              btn-block
+              btn-outline-secondary
+            "
+          >
+            <div class="btn btn-dark mr-3">
+              D
+            </div>
+            <div class="answer-text">
+              Manajemen, Teknis Produksi, Pemasaran, Keuangan, Amdal, Agunan dan makro ekonomi
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="cursor-pointer btn btn-primary"><i class="fas fa-chevron-circle-left mr-2"></i> Soal Sebelumnya</div>
+        <div
+          class="cursor-pointer btn btn-outline-warning text-dark"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="
+            Tandai jika anda belum yakin atas jawaban anda, agar bisa kembali lagi nanti
+          "
+        >
+          <i class="fas fa-flag mr-2"></i> Tandai Soal
+        </div>
+        <div class="cursor-pointer btn btn-primary">Soal Selanjutnya <i class="fas fa-chevron-circle-right ml-2"></i></div>
+      </div>
+    </div>
+  </div>
+</template>

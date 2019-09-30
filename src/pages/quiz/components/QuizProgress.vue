@@ -1,0 +1,37 @@
+<template>
+  <div id="quiz-detail" class="col-12 mt-4">
+    <div class="card shadow">
+      <div class="card-header">
+        Status Assessment
+      </div>
+      <div class="card-body">
+        <div class="row d-flex justify-content-center">
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">1</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">2</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">3</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">4</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">5</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">6</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">7</div>
+          </div>
+          <div class="col-3 col-md-6 col-lg-3">
+            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">8</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

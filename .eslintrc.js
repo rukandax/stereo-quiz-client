@@ -1,5 +1,10 @@
 module.exports = {
   root: true,
+  plugins: [
+    'html',
+    'vue',
+    'jest',
+  ],
   env: {
     node: true,
   },
@@ -17,10 +22,14 @@ module.exports = {
   overrides: [
     {
       files: [
+        '**/*.spec.{j,t}s?(x)',
         '**/__tests__/*.{j,t}s?(x)',
       ],
       env: {
         jest: true,
+      },
+      rules: {
+        'no-unused-expressions': 'off',
       },
     },
   ],
