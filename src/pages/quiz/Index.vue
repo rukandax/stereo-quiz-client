@@ -5,7 +5,9 @@
         <div class="card shadow">
           <div class="card-body">
             <div class="action-button mb-4">
-              <div class="btn btn-primary" data-toggle="modal" data-target="#modal-input-proktor">Assessment Baru</div>
+              <div class="btn btn-primary" data-toggle="modal" data-target="#modal-input-proktor">
+                Assessment Baru
+              </div>
             </div>
 
             <QuizHistory />

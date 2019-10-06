@@ -7,7 +7,9 @@ exports[`Pages Quiz Index Snapshot 1`] = `
       <div class="card shadow">
         <div class="card-body">
           <div class="action-button mb-4">
-            <div data-toggle="modal" data-target="#modal-input-proktor" class="btn btn-primary">Assessment Baru</div>
+            <div data-toggle="modal" data-target="#modal-input-proktor" class="btn btn-primary">
+              Assessment Baru
+            </div>
           </div>
           <quizhistory-stub></quizhistory-stub>
         </div>

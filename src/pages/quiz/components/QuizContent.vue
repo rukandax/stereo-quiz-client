@@ -5,7 +5,8 @@
         <div class="btn btn-secondary mr-3">1</div>
         <div class="question">
           <div class="h5 mb-5">
-            Variabel Analisa Kualitatif dalam pemberian kredit terdiri dari faktor internal dan eksternal. Faktor internal yang harus dianalisis meliputi aspek-spek sebagai berikut :
+            Variabel Analisa Kualitatif dalam pemberian kredit terdiri dari faktor internal dan eksternal.
+            Faktor internal yang harus dianalisis meliputi aspek-spek sebagai berikut :
           </div>
           <div
             class="
