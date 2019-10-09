@@ -6,11 +6,11 @@
           <div class="card-body">
             <div class="form-group">
               <label for="nip">NIP</label>
-              <input type="email" v-model="nip" class="form-control" id="nip" placeholder="Masukan NIP">
+              <input type="text" v-model="nip" class="form-control" id="nip" autocomplete="off" placeholder="Masukan NIP">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" v-model="password" class="form-control" id="password" placeholder="Masukan Password">
+              <input type="password" v-model="password" class="form-control" id="password" autocomplete="off" placeholder="Masukan Password">
             </div>
             <button @click="handleLogin()" class="btn btn-primary">Login</button>
           </div>
@@ -44,9 +44,9 @@ export default {
       };
 
       this.axiosPost('/auth', payload)
-        .then((res) => {
-          if (res && res.data) {
-            this.saveCredential(res.data);
+        .then(({ data }) => {
+          if (data) {
+            this.saveCredential(data);
             this.$router.push('/quiz');
           }
         })
@@ -63,6 +63,11 @@ export default {
           this.isLoading = false;
         });
     },
+  },
+  mounted() {
+    if (this.isUserSignedIn) {
+      this.$router.push('/quiz');
+    }
   },
 };
 </script>

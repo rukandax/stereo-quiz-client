@@ -1,11 +1,16 @@
-import { decode } from 'jwt-simple';
-import $ from 'jquery';
 import axios from 'axios';
 
 const API_URL = process.env.VUE_APP_API_URL;
 
 export default {
   computed: {
+    isUserSignedIn() {
+      if (this.$cookie.get('DB_CREDENTIAL') && this.$cookie.get('DB_CREDENTIAL').length) {
+        return true;
+      }
+
+      return false;
+    },
     credentialCookie() {
       if (this.$cookie.get('DB_CREDENTIAL') && this.$cookie.get('DB_CREDENTIAL').length) {
         return `?token=${this.$cookie.get('DB_CREDENTIAL')}`;
@@ -19,11 +24,6 @@ export default {
       if (!responseEncoded.length) {
         return;
       }
-
-      const responseDecoded = decode(responseEncoded, process.env.VUE_APP_JWT_KEY);
-
-      this.$store.commit('updateUserEmail', responseDecoded.users_email);
-      this.$store.commit('updateUserToken', responseDecoded.users_token);
 
       this.$cookie.set('DB_CREDENTIAL', responseEncoded);
     },
@@ -48,8 +48,6 @@ export default {
         .catch((err) => {
           if (err && err.response) {
             if (err.response.status === 401) {
-              console.log('masuk');
-              $('.toast').toast();
               this.$root.flash(err.response.data.error, 'danger');
             }
           } else {

@@ -17,6 +17,10 @@ export default {
   },
   mounted() {
     this.$root.flashInit();
+
+    if (this.$route.path !== '/login' && !this.isUserSignedIn) {
+      this.$router.push('/login');
+    }
   },
 };
 </script>
