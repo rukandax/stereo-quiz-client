@@ -6,24 +6,62 @@
           <div class="card-body">
             <div class="form-group">
               <label for="nip">NIP</label>
-              <input type="email" class="form-control" id="nip" placeholder="Masukan NIP">
+              <input type="email" v-model="nip" class="form-control" id="nip" placeholder="Masukan NIP">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Masukan Password">
+              <input type="password" v-model="password" class="form-control" id="password" placeholder="Masukan Password">
             </div>
-            <button class="btn btn-primary">Login</button>
+            <button @click="handleLogin()" class="btn btn-primary">Login</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
+import RequestMixin from '@/mixins/request-mixin';
+
 export default {
+  data() {
+    return {
+      isLoading: false,
+      nip: '',
+      password: '',
+    };
+  },
+  mixins: [
+    RequestMixin,
+  ],
   methods: {
     handleLogin() {
-      this.$router.push('/quiz');
+      this.isLoading = true;
+
+      const payload = {
+        nip: this.nip,
+        password: this.password,
+      };
+
+      this.axiosPost('/auth', payload)
+        .then((res) => {
+          if (res && res.data) {
+            this.saveCredential(res.data);
+            this.$router.push('/quiz');
+          }
+        })
+        .catch(({ response }) => {
+          if (response && response.data) {
+            if (typeof response.data.error === 'object') {
+              this.$root.flash(response.data.error.message, 'danger');
+            } else {
+              this.$root.flash(response.data.error, 'danger');
+            }
+          }
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
     },
   },
 };

@@ -21,11 +21,6 @@ export default new Router({
       component: LoginIndex,
     },
     {
-      path: '/quiz/:id',
-      name: 'quiz-detail',
-      component: QuizDetail,
-    },
-    {
       path: '/quiz',
       name: 'quiz-index',
       component: QuizIndex,
