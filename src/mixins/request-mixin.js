@@ -34,6 +34,7 @@ export default {
           if (err && err.response) {
             if (err.response.status === 401) {
               this.$root.flash(err.response.data.error, 'danger');
+              this.$cookie.delete('DB_CREDENTIAL');
             }
           } else {
             this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');
@@ -49,6 +50,7 @@ export default {
           if (err && err.response) {
             if (err.response.status === 401) {
               this.$root.flash(err.response.data.error, 'danger');
+              this.$cookie.delete('DB_CREDENTIAL');
             }
           } else {
             this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');
@@ -64,6 +66,7 @@ export default {
           if (err && err.response) {
             if (err.response.status === 401) {
               this.$root.flash(err.response.data.error, 'danger');
+              this.$cookie.delete('DB_CREDENTIAL');
             }
           } else {
             this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');

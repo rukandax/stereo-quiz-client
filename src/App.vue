@@ -9,9 +9,14 @@
 </template>
 
 <script>
+import RequestMixin from '@/mixins/request-mixin';
+
 import FlashMessage from '@/components/FlashMessage.vue';
 
 export default {
+  mixins: [
+    RequestMixin,
+  ],
   components: {
     FlashMessage,
   },

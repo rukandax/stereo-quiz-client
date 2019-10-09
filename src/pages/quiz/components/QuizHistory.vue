@@ -26,3 +26,24 @@
     </table>
   </div>
 </template>
+
+<script>
+import RequestMixin from '@/mixins/request-mixin';
+
+export default {
+  mixins: [
+    RequestMixin,
+  ],
+  data() {
+    return {
+      quiz: [],
+    };
+  },
+  mounted() {
+    this.axiosGet('/quiz')
+      .then(({ data }) => {
+        this.quiz = data;
+      });
+  },
+};
+</script>
