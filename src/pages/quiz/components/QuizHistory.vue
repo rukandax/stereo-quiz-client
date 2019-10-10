@@ -7,19 +7,24 @@
     <table class="table table-striped table-hover">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">No</th>
           <th scope="col">Judul</th>
+          <th scope="col">Kelas</th>
           <th scope="col">Tanggal</th>
-          <th scope="col">Status</th>
+          <th scope="col">#</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Assessment CMLD</td>
-          <td>29 September 2019</td>
-          <td>
-            <span class="badge badge-success">Lulus</span>
+        <tr v-if="quiz.length <= 0">
+          <td class="text-center" colspan="5">Belum ada assessment yang Anda kerjakan.</td>
+        </tr>
+        <tr v-else v-for="(qz, qzIndex) in quiz" :key="`quiz-${qz.id}`">
+          <th class="align-middle" scope="row">{{ qzIndex + 1 }}</th>
+          <td class="align-middle">{{ qz.quiz_name }}</td>
+          <td class="align-middle">{{ qz.proktor_name }}</td>
+          <td class="align-middle">{{ $moment(qz.date).format('Do MMMM YYYY') }}</td>
+          <td class="align-middle d-flex justify-content-between align-items-center">
+            <div class="btn btn-info btn-sm">Status Kelulusan (4/4)</div>
           </td>
         </tr>
       </tbody>

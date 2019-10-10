@@ -2,6 +2,7 @@ import $ from 'jquery';
 import Vue from 'vue';
 import VueMeta from 'vue-meta';
 import VueCookie from 'vue-cookie';
+import moment from 'moment';
 
 import App from './App.vue';
 
@@ -23,6 +24,11 @@ Vue.use(VueMeta, {
 });
 
 Vue.use(VueCookie);
+
+moment.locale('id');
+Vue.use((vue) => {
+  vue.prototype.$moment = moment; // eslint-disable-line
+});
 
 new Vue({
   data() {

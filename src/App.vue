@@ -20,12 +20,23 @@ export default {
   components: {
     FlashMessage,
   },
+  methods: {
+    checkUserSignedIn() {
+      if (this.$route.path !== '/login' && !this.isUserSignedIn) {
+        this.$router.push('/login');
+      }
+    },
+  },
   mounted() {
     this.$root.flashInit();
-
-    if (this.$route.path !== '/login' && !this.isUserSignedIn) {
-      this.$router.push('/login');
-    }
+  },
+  watch: {
+    isUserSignedIn: {
+      handler() {
+        this.checkUserSignedIn();
+      },
+      immediate: true,
+    },
   },
 };
 </script>
