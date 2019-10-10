@@ -7,7 +7,7 @@ import LoginIndex from './pages/login/Index.vue';
 // Quiz Pages
 import QuizIndex from './pages/quiz/Index.vue';
 import QuizDetail from './pages/quiz/Detail.vue';
-import QuizStart from './pages/quiz/Start.vue';
+import QuizAssess from './pages/quiz/Assess.vue';
 
 Vue.use(Router);
 
@@ -26,14 +26,18 @@ export default new Router({
       component: QuizIndex,
     },
     {
-      path: '/quiz/:id',
+      path: '/quiz/:code',
       name: 'quiz-detail',
       component: QuizDetail,
     },
     {
-      path: '/quiz/:id/start',
-      name: 'quiz-start',
-      component: QuizStart,
+      path: '/quiz/:code/assess',
+      redirect: '/quiz/:code/assess/1',
+    },
+    {
+      path: '/quiz/:code/assess/:num',
+      name: 'quiz-assess',
+      component: QuizAssess,
     },
   ],
 });

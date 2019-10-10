@@ -8,10 +8,13 @@
               <div class="btn btn-primary" data-toggle="modal" data-target="#modal-input-proktor">
                 Kerjakan Assessment
               </div>
-              <a href="#" class="profile">
-                <img :src="`https://api.adorable.io/avatars/14/${user.email}.png`" class="img-thumbnail rounded mr-2">
-                <span class="font-weight-bold">{{ user.name }}</span>
-              </a>
+              <div class="d-flex justify-content-between align-items-center">
+                <img :src="`https://api.adorable.io/avatars/14/${user.email}.png`" class="img-thumbnail rounded">
+                <div class="ml-2">
+                  <div class="font-weight-bold">{{ user.name }}</div>
+                  <a href="#" class="text-muted small"><i class="fas fa-chevron-right"></i> Pengaturan</a>
+                </div>
+              </div>
             </div>
 
             <QuizHistory />

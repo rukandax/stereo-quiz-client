@@ -5,33 +5,31 @@
         Status Assessment
       </div>
       <div class="card-body">
-        <div class="row d-flex justify-content-center">
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">1</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">2</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">3</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">4</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">5</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">6</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">7</div>
-          </div>
-          <div class="col-3 col-md-6 col-lg-3">
-            <div class="cursor-pointer btn btn-block btn-outline-secondary mb-4">8</div>
+        <div class="row d-flex justify-content-start">
+          <div v-for="num in totalQuestions" :key="`num-${num}`" class="col-3 col-md-6 col-lg-3">
+            <router-link
+              :to="{ params: { num } }"
+              class="cursor-pointer btn btn-block mb-4"
+              :class="num === currentNumber ? 'btn-secondary' : 'btn-outline-secondary'"
+            >
+              {{ num }}
+            </router-link>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters(['totalQuestions']),
+    currentNumber() {
+      return parseInt(this.$route.params.num, 10);
+    },
+  },
+};
+</script>

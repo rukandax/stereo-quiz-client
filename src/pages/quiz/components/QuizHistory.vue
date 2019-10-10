@@ -23,8 +23,10 @@
           <td class="align-middle">{{ qz.quiz_name }}</td>
           <td class="align-middle">{{ qz.proktor_name }}</td>
           <td class="align-middle">{{ $moment(qz.date).format('Do MMMM YYYY') }}</td>
-          <td class="align-middle d-flex justify-content-between align-items-center">
-            <div class="btn btn-info btn-sm">Status Kelulusan (4/4)</div>
+          <td class="align-middle">
+            <div v-if="qz.state === 'PENDING'" disabled class="btn btn-primary btn-sm">Sedang Berlangsung</div>
+            <div v-else-if="qz.state === 'PROGRESS'" disabled class="btn btn-primary btn-sm">Selesai & Sedang Dikoreksi</div>
+            <div v-else class="btn btn-info btn-sm">Status Kelulusan (4/4)</div>
           </td>
         </tr>
       </tbody>

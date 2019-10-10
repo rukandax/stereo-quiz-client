@@ -6,13 +6,23 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: {},
+    questions: [],
+    answers: [],
   },
   mutations: {
     updateUser(state, payload) {
       state.user = payload;
     },
+    updateQuestions(state, payload) {
+      state.questions = payload;
+    },
+    updateAnswers(state, payload) {
+      state.answers = payload;
+    },
   },
-  actions: {
-
+  getters: {
+    totalQuestions(state) {
+      return state.questions.length;
+    },
   },
 });
