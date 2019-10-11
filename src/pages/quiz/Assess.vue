@@ -64,7 +64,7 @@ export default {
         this.$router.push(`/quiz/${this.$route.params.code}/assess/1`);
       }
 
-      if (this.totalQuestions && this.currentNumber > this.totalQuestions) {
+      if (this.currentNumber > this.totalQuestions) {
         this.$router.push(`/quiz/${this.$route.params.code}/assess/${this.totalQuestions}`);
       }
     },
