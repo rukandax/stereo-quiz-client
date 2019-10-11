@@ -65,10 +65,18 @@
               <div class="col-6 px-5">
                 <div class="alert alert-warning p-0 mb-5">
                   <ul class="my-4 mx-0">
-                    <li class="mb-3">Pastikan data assessment disamping telah sesuai dengan assessment yang ingin Anda kerjakan</li>
-                    <li class="mb-3">Pastikan Anda memiliki koneksi internet yang stabil</li>
-                    <li class="mb-3">Waktu pengerjaan akan dimulai saat anda menekan tombol "Mulai Assessment"</li>
-                    <li class="mb-3">Waktu pengerjaan akan tetap berjalan walaupun sistem ditutup atau logout</li>
+                    <li class="mb-3">
+                      Pastikan data assessment telah sesuai dengan assessment yang ingin Anda kerjakan
+                    </li>
+                    <li class="mb-3">
+                      Pastikan Anda memiliki koneksi internet yang stabil
+                    </li>
+                    <li class="mb-3">
+                      Waktu pengerjaan akan dimulai saat anda menekan tombol "Mulai Assessment"
+                    </li>
+                    <li class="mb-3">
+                      Setelah menekan tombol "Mulai Assessment", waktu pengerjaan akan tetap berjalan walaupun sistem ditutup atau logout
+                    </li>
                   </ul>
                 </div>
 

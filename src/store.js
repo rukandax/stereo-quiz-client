@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     questions: [],
+    createdAt: 0,
     answers: [],
+    quiz: {},
   },
   mutations: {
     updateUser(state, payload) {
@@ -16,8 +18,14 @@ export default new Vuex.Store({
     updateQuestions(state, payload) {
       state.questions = payload;
     },
+    updateCreatedAt(state, payload) {
+      state.createdAt = payload;
+    },
     updateAnswers(state, payload) {
       state.answers = payload;
+    },
+    updateQuiz(state, payload) {
+      state.quiz = payload;
     },
   },
   getters: {

@@ -26,6 +26,8 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 import RequestMixin from '@/mixins/request-mixin';
 
 import QuizContent from '@/pages/quiz/components/QuizContent.vue';
@@ -42,20 +44,30 @@ export default {
     QuizProgress,
   },
   computed: {
+    ...mapGetters(['totalQuestions']),
     currentNumber() {
       return parseInt(this.$route.params.num, 10);
     },
   },
   mounted() {
-    if (this.currentNumber && this.currentNumber < 1) {
-      this.$router.push(`/quiz/${this.$route.params.code}/assess/1`);
-    }
-
     this.axiosGet(`/quiz/${this.$route.params.code}/data`)
       .then(({ data }) => {
-        this.$store.commit('updateQuestions', JSON.parse(data.question));
-        this.$store.commit('updateAnswers', JSON.parse(data.answer));
+        this.$store.commit('updateQuestions', data.question_data);
+        this.$store.commit('updateAnswers', data.answer_data);
+        this.$store.commit('updateCreatedAt', data.created_at);
+        this.$store.commit('updateQuiz', data.quiz_data);
       });
+  },
+  watch: {
+    totalQuestions() {
+      if (this.currentNumber < 1) {
+        this.$router.push(`/quiz/${this.$route.params.code}/assess/1`);
+      }
+
+      if (this.totalQuestions && this.currentNumber > this.totalQuestions) {
+        this.$router.push(`/quiz/${this.$route.params.code}/assess/${this.totalQuestions}`);
+      }
+    },
   },
 };
 </script>

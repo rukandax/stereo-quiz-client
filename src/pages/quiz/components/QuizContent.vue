@@ -4,12 +4,12 @@
       <div class="d-flex align-items-start mb-5">
         <div class="btn btn-secondary mr-3">{{ currentNumber }}</div>
         <div class="question">
-          <div class="h5 mb-5 mt-1">
-            {{ currentQuestion.question.text }}
+          <div class="question-text h5 mb-4">
+            {{ currentQuestion }}
           </div>
           <div
-            v-for="(answer, answerIndex) in currentQuestion.answer"
-            :key="`answer-${answer.index}`"
+            v-for="(answer, answerIndex) in currentAnswer"
+            :key="`answer-${answerIndex}`"
             class="
               cursor-pointer
               d-flex
@@ -27,7 +27,7 @@
               {{ ANSWER_LETTER[answerIndex] }}
             </div>
             <div class="answer-text mt-1">
-              {{ answer.text }}
+              {{ answer }}
             </div>
           </div>
         </div>
@@ -85,16 +85,23 @@ export default {
   },
   computed: {
     ...mapGetters(['totalQuestions']),
-    ...mapState(['questions']),
+    ...mapState(['questions', 'answers']),
+    currentNumber() {
+      return parseInt(this.$route.params.num, 10);
+    },
     currentQuestion() {
       if (!this.questions.length) {
-        return '';
+        return [];
       }
 
       return this.questions[this.currentNumber - 1];
     },
-    currentNumber() {
-      return parseInt(this.$route.params.num, 10);
+    currentAnswer() {
+      if (!this.answers.length) {
+        return [];
+      }
+
+      return this.answers[this.currentNumber - 1];
     },
   },
   mounted() {
@@ -120,3 +127,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.question-text {
+  line-height: 1.6;
+}
+</style>
