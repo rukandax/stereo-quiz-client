@@ -4,6 +4,9 @@ const API_URL = process.env.VUE_APP_API_URL;
 
 export default {
   computed: {
+    fingerprint() {
+      return window.navigator.userAgent;
+    },
     isUserSignedIn() {
       if (this.$cookie.get('DB_CREDENTIAL') && this.$cookie.get('DB_CREDENTIAL').length) {
         return true;
@@ -40,7 +43,7 @@ export default {
             this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');
           }
 
-          throw new Error(err);
+          return new Promise((_, reject) => reject(err));
         });
     },
     axiosPost(path, payload) {
@@ -56,7 +59,7 @@ export default {
             this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');
           }
 
-          throw new Error(err);
+          return new Promise((_, reject) => reject(err));
         });
     },
     axiosPatch(path, payload) {
@@ -72,7 +75,7 @@ export default {
             this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');
           }
 
-          throw Error(err);
+          return new Promise((_, reject) => reject(err));
         });
     },
   },

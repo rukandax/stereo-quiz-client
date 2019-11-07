@@ -5,8 +5,15 @@
         <div class="card shadow">
           <div class="card-body">
             <div class="action-button mb-4 d-flex justify-content-between align-items-center">
-              <div class="btn btn-primary" data-toggle="modal" data-target="#modal-input-proktor">
-                Kerjakan Assessment
+              <div class="d-flex align-items-center">
+                <ModalInputProktor />
+                <div class="btn btn-primary mr-4" data-toggle="modal" data-target="#modal-input-proktor">
+                  Kerjakan Assessment
+                </div>
+
+                <div @click="logout()" class="btn btn-danger" data-toggle="modal" data-target="#modal-logout-system">
+                  Logout
+                </div>
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <img :src="`https://api.adorable.io/avatars/14/${user.email}.png`" class="img-thumbnail rounded">
@@ -22,8 +29,6 @@
         </div>
       </div>
     </div>
-
-    <ModalInputProktor />
   </div>
 </template>
 

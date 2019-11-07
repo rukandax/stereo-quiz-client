@@ -15,7 +15,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
           <button @click="validateCode()" type="button" class="btn btn-primary">Masuk</button>
         </div>
       </div>

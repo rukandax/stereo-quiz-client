@@ -6,11 +6,27 @@
           <div class="card-body">
             <div class="form-group">
               <label for="nip">NIP</label>
-              <input type="text" v-model="nip" class="form-control" id="nip" autocomplete="off" placeholder="Masukan NIP">
+              <input
+                @keydown.enter="handleLogin()"
+                type="text"
+                v-model="nip"
+                class="form-control"
+                id="nip"
+                autocomplete="off"
+                placeholder="Masukan NIP"
+              >
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" v-model="password" class="form-control" id="password" autocomplete="off" placeholder="Masukan Password">
+              <input
+                @keydown.enter="handleLogin()"
+                type="password"
+                v-model="password"
+                class="form-control"
+                id="password"
+                autocomplete="off"
+                placeholder="Masukan Password"
+              >
             </div>
             <button @click="handleLogin()" class="btn btn-primary">Login</button>
           </div>
@@ -41,6 +57,7 @@ export default {
       const payload = {
         nip: this.nip,
         password: this.password,
+        fingerprint: this.fingerprint,
       };
 
       this.axiosPost('/auth', payload)

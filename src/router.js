@@ -39,5 +39,9 @@ export default new Router({
       name: 'quiz-assess',
       component: QuizAssess,
     },
+    {
+      path: '*',
+      redirect: '/quiz',
+    },
   ],
 });

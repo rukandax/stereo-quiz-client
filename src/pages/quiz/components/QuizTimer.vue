@@ -13,7 +13,12 @@
 <script>
 import { mapState } from 'vuex';
 
+import RequestMixin from '@/mixins/request-mixin';
+
 export default {
+  mixins: [
+    RequestMixin,
+  ],
   data() {
     return {
       days: 0,
@@ -25,27 +30,30 @@ export default {
   computed: {
     ...mapState(['createdAt', 'quiz']),
   },
+  mounted() {
+    this.$store.commit('updateCreatedAt', 0);
+  },
   watch: {
     createdAt() {
-      const eventTime = parseInt(this.createdAt, 10) + (parseInt(this.quiz.duration, 10) * 60);
-      const currentTime = this.$moment().unix();
-      const diffTime = eventTime - currentTime;
-      const interval = 1000;
-      let duration = this.$moment.duration(diffTime * 1000, 'milliseconds');
+      let timerInterval = null;
 
-      if (diffTime > 0) {
-        const vue = this;
-        setInterval(() => {
-          duration = vue.$moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
-          vue.days = vue.$moment.duration(duration).days();
-          vue.hours = vue.$moment.duration(duration).hours();
-          vue.minutes = vue.$moment.duration(duration).minutes();
-          vue.seconds = vue.$moment.duration(duration).seconds();
-        }, interval);
-      } else {
-        this.$root.flash('Waktu assessment telah berakhir');
-        this.$router.push('/quiz');
-      }
+      const vue = this;
+      timerInterval = setInterval(() => {
+        const eventTime = parseInt(this.createdAt, 10) + (parseInt(this.quiz.duration, 10) * 60);
+        const currentTime = this.$moment().unix();
+        const diffTime = eventTime - currentTime;
+        const duration = this.$moment.duration(diffTime * 1000, 'milliseconds');
+
+        vue.days = vue.$moment.duration(duration).days();
+        vue.hours = vue.$moment.duration(duration).hours();
+        vue.minutes = vue.$moment.duration(duration).minutes();
+        vue.seconds = vue.$moment.duration(duration).seconds();
+
+        if (vue.createdAt > 0 && vue.days <= 0 && vue.hours <= 0 && vue.minutes <= 0 && vue.seconds <= 0) {
+          clearInterval(timerInterval);
+          vue.$emit('finishQuiz', 'Waktu assessment telah berakhir');
+        }
+      }, 1000);
     },
   },
 };

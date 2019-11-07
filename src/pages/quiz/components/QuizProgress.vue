@@ -6,13 +6,18 @@
       </div>
       <div class="card-body">
         <div class="row d-flex justify-content-start">
-          <div v-for="num in totalQuestions" :key="`num-${num}`" class="col-3 col-md-6 col-lg-3">
+          <div v-for="(answer, answerIndex) in chosenAnswers" :key="`answer-${answerIndex}`" class="col-3 col-md-6 col-lg-3">
             <router-link
-              :to="{ params: { num } }"
+              :to="{ params: { num: answerIndex + 1 } }"
               class="cursor-pointer btn btn-block mb-4"
-              :class="num === currentNumber ? 'btn-secondary' : 'btn-outline-secondary'"
+              :class="
+                isCurrentNumber(answerIndex) ? 'btn-secondary'
+                  : isFlagged(answer) ? 'btn-warning'
+                  : isAnswered(answer) ? 'btn-primary'
+                  : 'btn-outline-secondary'
+              "
             >
-              {{ num }}
+              {{ answerIndex + 1 }}
             </router-link>
           </div>
         </div>
@@ -22,13 +27,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['totalQuestions']),
+    ...mapState(['chosenAnswers']),
     currentNumber() {
       return parseInt(this.$route.params.num, 10);
+    },
+  },
+  methods: {
+    isCurrentNumber(answerIndex) {
+      return answerIndex + 1 === this.currentNumber;
+    },
+    isAnswered(answer) {
+      return parseInt(answer.index, 10) > -1;
+    },
+    isFlagged(answer) {
+      return answer.flag;
     },
   },
 };

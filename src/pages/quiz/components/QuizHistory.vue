@@ -24,8 +24,19 @@
           <td class="align-middle">{{ qz.proktor_name }}</td>
           <td class="align-middle">{{ $moment(qz.date).format('Do MMMM YYYY') }}</td>
           <td class="align-middle">
-            <div v-if="qz.state === 'PENDING'" disabled class="btn btn-primary btn-sm">Sedang Berlangsung</div>
-            <div v-else-if="qz.state === 'PROGRESS'" disabled class="btn btn-primary btn-sm">Selesai & Sedang Dikoreksi</div>
+            <router-link
+              :to="`/quiz/${(qz.proktor_code || '').toLowerCase()}/assess`"
+              v-if="qz.state === 'PENDING'"
+              disabled class="btn btn-info btn-sm"
+            >
+              Lanjut Mengerjakan
+            </router-link>
+            <div
+              v-else-if="qz.state === 'EVALUATING'"
+              disabled class="btn btn-secondary btn-sm disabled"
+            >
+              Dalam Proses Koreksi Otomatis
+            </div>
             <div v-else class="btn btn-info btn-sm">Status Kelulusan (4/4)</div>
           </td>
         </tr>

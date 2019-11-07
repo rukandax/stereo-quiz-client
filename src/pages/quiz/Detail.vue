@@ -66,7 +66,7 @@
                 <div class="alert alert-warning p-0 mb-5">
                   <ul class="my-4 mx-0">
                     <li class="mb-3">
-                      Pastikan data assessment telah sesuai dengan assessment yang ingin Anda kerjakan
+                      Pastikan data telah sesuai dengan assessment yang ingin Anda kerjakan
                     </li>
                     <li class="mb-3">
                       Pastikan Anda memiliki koneksi internet yang stabil
@@ -76,6 +76,9 @@
                     </li>
                     <li class="mb-3">
                       Setelah menekan tombol "Mulai Assessment", waktu pengerjaan akan tetap berjalan walaupun sistem ditutup atau logout
+                    </li>
+                    <li>
+                      Anda tidak diperbolehkan mengalihkan halaman selama assessment berlangsung
                     </li>
                   </ul>
                 </div>
@@ -105,7 +108,7 @@ export default {
     };
   },
   computed: {
-    code() {
+    currentCode() {
       return this.$route.params.code;
     },
   },
@@ -115,21 +118,30 @@ export default {
         this.user = data;
       });
 
-    this.axiosGet(`/quiz/${this.code}`)
+    this.axiosGet(`/quiz/${this.currentCode}`)
       .then(({ data }) => {
         this.quiz = data;
+      })
+      .catch((err) => {
+        if (err && err.response) {
+          this.$root.flash(err.response.data.error, 'danger');
+        } else {
+          this.$root.flash('Terjadi kesalahan, silahkan coba lagi', 'danger');
+        }
+
+        this.$router.push('/quiz');
       });
   },
   methods: {
     startQuiz() {
       const payload = {
-        code: this.code,
+        code: this.currentCode,
       };
 
       this.axiosPost('/quiz/start', payload)
         .then(({ data }) => {
           if (data) {
-            this.$router.push(`/quiz/${this.code}/assess`);
+            this.$router.push(`/quiz/${this.currentCode}/assess`);
           }
         });
     },

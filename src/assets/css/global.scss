@@ -5,7 +5,8 @@ body {
 .cursor-pointer, button, .btn {
   cursor: pointer;
 
-  &.disabled {
+  &.disabled, &:disabled {
     cursor: not-allowed;
   }
+  
 }

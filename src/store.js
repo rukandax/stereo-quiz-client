@@ -8,7 +8,8 @@ export default new Vuex.Store({
     user: {},
     questions: [],
     createdAt: 0,
-    answers: [],
+    multipleAnswers: [],
+    chosenAnswers: [],
     quiz: {},
   },
   mutations: {
@@ -22,7 +23,10 @@ export default new Vuex.Store({
       state.createdAt = payload;
     },
     updateAnswers(state, payload) {
-      state.answers = payload;
+      state.multipleAnswers = payload;
+    },
+    updateChosenAnswers(state, payload) {
+      state.chosenAnswers = payload;
     },
     updateQuiz(state, payload) {
       state.quiz = payload;
